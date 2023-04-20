@@ -11,14 +11,19 @@ suite(
       before(async function () {
         driver = await new Builder().forBrowser("chrome").build();
       });
-      after(async () => await driver.quit());
-      it("Test with an error login", async function () {
-        await driver.get("https://www.facebook.com/");
+
+      it("Should be error login", async function () {
+        await driver.get("https://www.facebook.com");
         await driver.manage().window().setRect({ width: 968, height: 1020 });
-        await driver.findElement(By.id("email")).sendKeys("test1@gmail.com");
+        await driver
+          .findElement(By.id("email"))
+          .sendKeys("waxexa1154@hrisland.com");
         await driver.findElement(By.id("pass")).sendKeys("123456789");
         await driver.findElement(By.name("login")).click();
+        assert(await driver.findElement(By.css(".\\_9ay7")).getText()) ==
+          "La contraseña que has introducido es incorrecta. ¿Has olvidado la contraseña?";
       });
+      after(async () => await driver.quit());
     });
   },
   { Browser: [Browser.CHROME] }
