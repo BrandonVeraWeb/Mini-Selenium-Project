@@ -59,7 +59,7 @@ suite(
         );
         await driver.findElement(xpathTwt).click();
       });
-      //after(async () => await driver.quit());
+      after(async () => await driver.quit());
     });
   },
   { Browser: [Browser.CHROME] }
