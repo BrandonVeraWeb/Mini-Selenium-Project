@@ -1,25 +1,23 @@
 const { Builder, By, Key, until, Browser } = require("selenium-webdriver");
-const assert = require("assert");
 const { suite } = require("selenium-webdriver/testing");
+const LoginPage = require("./LoginPage.js");
 
 suite(
   function (env) {
-    describe("Make a test with a successful login", function () {
+    describe("Make a test with an error login", function () {
       this.timeout(30000);
-      let driver;
-      before(async function () {
-        driver = await new Builder().forBrowser("chrome").build();
-        await driver.get("https://www.facebook.com");
+      const loginPage = new LoginPage(env);
+      before(async () => {
+        await loginPage.waitBrowser();
+        await loginPage.link();
       });
-      it("Should be successful login", async function () {
-        await driver.manage().window().setRect({ width: 968, height: 1020 });
-        await driver
-          .findElement(By.id("email"))
-          .sendKeys("waxexa1154@hrisland.com");
-        await driver.findElement(By.id("pass")).sendKeys("carroSeguro23");
-        await driver.findElement(By.name("login")).click();
+
+      it("Should be error login", async function () {
+        await loginPage.login("waxexa1154@hrisland.com", "carroSeguro23");
       });
-      //after(async () => await driver.quit());
+      after(async () =>
+        setTimeout(async () => await loginPage.closeBrowser(), 3000)
+      );
     });
   },
   { Browser: [Browser.CHROME] }
