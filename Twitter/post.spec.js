@@ -9,10 +9,11 @@ suite(function (env) {
     logInPage.LoginProcess();
   });
 
-  describe("Make a post in twitter", function () {
+  describe("Make a post in twitter", function (env) {
     this.timeout(60000);
-    it("Make a post", async function (env) {
-      const postPage = new PostPage(env);
+    const postPage = new PostPage(env);
+
+    it("Make a post", async function () {
       postPage.ProcessPost();
     });
   });
