@@ -11,8 +11,6 @@ suite(function (env) {
     it("Should be a success login", function () {
       loginPage.LoginSuccess();
     });
-    after(async () =>
-      setTimeout(async () => await loginPage.closeBrowser(), 3000)
-    );
+    after(async () => await loginPage.closeBrowser());
   });
 });
