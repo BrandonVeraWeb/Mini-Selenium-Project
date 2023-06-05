@@ -1,5 +1,5 @@
 const { Builder, By, until, Key } = require("selenium-webdriver");
-const { driver } = require("./driver");
+const { driver } = require("../src/driver");
 
 class LoginPage {
   constructor() {
