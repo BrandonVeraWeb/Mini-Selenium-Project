@@ -1,4 +1,4 @@
-const { Builder, By, until, Key } = require("selenium-webdriver");
+const { By, until, Key } = require("selenium-webdriver");
 const { driver } = require("../src/driver");
 
 class LoginPage {
@@ -15,7 +15,7 @@ class LoginPage {
 
   async OpenTwitter() {
     await this.page;
-    await driver.manage().window().setRect({ width: 1624, height: 1268 });
+    await driver.manage().window().maximize();
   }
 
   async loginEmail(email) {
