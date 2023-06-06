@@ -1,5 +1,5 @@
 const { until, By } = require("selenium-webdriver");
-const { driver } = require("./driver");
+const { driver } = require("../../src/driver");
 
 class DeleteComment {
   async DeleteProcess() {

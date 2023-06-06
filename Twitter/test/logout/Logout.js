@@ -1,5 +1,5 @@
 const { By, until, Key } = require("selenium-webdriver");
-const { driver } = require("../src/driver");
+const { driver } = require("../../src/driver");
 
 class Logout {
   async LogoutProcess() {

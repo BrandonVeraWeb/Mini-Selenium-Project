@@ -1,6 +1,6 @@
 const { until, By, Key } = require("selenium-webdriver");
-const { driver } = require("./driver");
-const { animal } = require("../utils/Chance.js");
+const { driver } = require("../../src/driver");
+const { animal } = require("../../utils/Chance.js");
 
 class Comment {
   async processComment() {
