@@ -1,5 +1,5 @@
 const LogInPage = require("../../utils/LogIn.js");
-const PostPage = require("../../src/post.js");
+const PostPage = require("./post.js");
 
 describe("Make a post in twitter", function (env) {
   this.timeout(60000);

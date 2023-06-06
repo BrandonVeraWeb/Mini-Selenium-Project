@@ -1,6 +1,6 @@
 const { By, until } = require("selenium-webdriver");
-const { driver } = require("./driver");
-const { sentence } = require("../utils/Chance.js");
+const { driver } = require("../../src/driver");
+const { sentence } = require("../../utils/Chance.js");
 
 class PostPage {
   async ProcessPost() {
