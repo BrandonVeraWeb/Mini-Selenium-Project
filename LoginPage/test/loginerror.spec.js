@@ -1,5 +1,5 @@
 const { suite } = require("selenium-webdriver/testing");
-const LoginPage = require("./utils/LoginPage");
+const LoginPage = require("../utils/LoginPage");
 
 suite(function (env) {
   const loginPage = new LoginPage(env);
