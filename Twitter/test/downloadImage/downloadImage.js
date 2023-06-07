@@ -22,7 +22,7 @@ class DownloadImg {
 
   async downloadPicture() {
     let pictureProfile = await driver.wait(
-      until.elementLocated(By.css(".css-9pa8cd")),
+      until.elementLocated(By.className("css-9pa8cd")),
       12000
     );
     const imageUrl = await pictureProfile.getAttribute("src");
