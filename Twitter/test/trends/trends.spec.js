@@ -12,6 +12,6 @@ describe("Watch the trend", function (env) {
   });
 
   it("Click trends", async function () {
-    await trends.clickTrends();
+    await trends.TrendsProcess();
   });
 });
