@@ -1,16 +1,14 @@
-const { suite } = require("selenium-webdriver/testing");
-const LoginPage = require("./utils/LoginPage");
+const LoginPage = require("../utils/LoginPage");
 
-suite(function (env) {
+describe("Make a test with a Success login", function (env) {
+  this.timeout(30000);
   const loginPage = new LoginPage(env);
   before(() => {
-    loginPage.OpenTwitter();
+    loginPage.OpenFacebook();
   });
-  describe("Make a test with a Success login", function () {
-    this.timeout(30000);
-    it("Should be a success login", function () {
-      loginPage.LoginSuccess();
-    });
-    after(async () => await loginPage.closeBrowser());
+  it("Should be a success login", async function () {
+    await loginPage.LoginSuccess();
+    await loginPage.validation();
   });
+  after(async () => await loginPage.closeBrowser());
 });
