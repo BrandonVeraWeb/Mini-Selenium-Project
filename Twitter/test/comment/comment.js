@@ -1,6 +1,7 @@
 const { until, By, Key } = require("selenium-webdriver");
 const { driver } = require("../../src/driver");
 const { animal } = require("../../utils/Chance.js");
+const assert = require("assert");
 
 class Comment {
   async processComment() {
@@ -46,6 +47,31 @@ class Comment {
       9000
     );
     await button.click();
+  }
+  async validation() {
+    await this.divComment();
+    await this.dataTimeComment();
+  }
+  async divComment() {
+    let comment = await driver.wait(
+      until.elementLocated(
+        By.className("css-1dbjc4n r-1iusvr4 r-16y2uox r-1777fci r-kzbkwu")
+      ),
+      6000
+    );
+    assert(comment !== null);
+  }
+
+  async dataTimeComment() {
+    let dataDiv = await driver.wait(
+      until.elementLocated(
+        By.className(
+          "css-4rbku5 css-18t94o4 css-901oao r-1bwzh9t r-1loqt21 r-xoduu5 r-1q142lx r-1w6e6rj r-37j5jr r-a023e6 r-16dba41 r-9aw3ui r-rjixqe r-bcqeeo r-3s2u2q r-qvutc0"
+        )
+      ),
+      5000
+    );
+    assert(dataDiv !== null);
   }
 }
 
