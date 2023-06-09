@@ -28,7 +28,7 @@ class LoginPage {
     await passwordField.sendKeys(Key.ENTER);
   }
 
-  async validation() {
+  async validationSuccess() {
     await this.navBarProfile();
     await this.logoFacebook();
     await this.numberPhone();
@@ -63,6 +63,43 @@ class LoginPage {
     );
     const text = await divPhone.getText();
     assert(text === "Introduce un número de móvil");
+  }
+
+  async validationError() {
+    await this.logoFb();
+    await this.errorMessage();
+    await this.inputs();
+  }
+
+  async logoFb() {
+    let logo = await driver.wait(
+      until.elementLocated(By.className("_97vu img")),
+      5000
+    );
+    assert(logo !== null);
+  }
+  async errorMessage() {
+    let errorLog = await driver.wait(
+      until.elementLocated(
+        By.css('a[href*="https://facebook.com/login/identify/"]')
+      ),
+      5000
+    );
+
+    const text = await errorLog.getText();
+    assert(text === "Find your account and log in.");
+  }
+
+  async inputs() {
+    let inputEmail = await driver.wait(
+      until.elementLocated(By.css('input[name*="email"]')),
+      4000
+    );
+    let inputPass = await driver.wait(
+      until.elementLocated(By.css('input[name="pass"]')),
+      4000
+    );
+    assert(inputEmail && inputPass !== null);
   }
 
   async closeBrowser() {
