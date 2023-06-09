@@ -8,7 +8,7 @@ describe("Make a test with a Success login", function (env) {
   });
   it("Should be a success login", async function () {
     await loginPage.LoginSuccess();
-    await loginPage.validation();
+    await loginPage.validationSuccess();
   });
-  after(async () => await loginPage.closeBrowser());
+  //after(async () => await loginPage.closeBrowser());
 });
