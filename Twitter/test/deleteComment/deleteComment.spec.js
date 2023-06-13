@@ -1,7 +1,7 @@
 const LogInPage = require("../../utils/LogIn.js");
-const PostPage = require("../../src/post.js");
-const Comment = require("../../src/comment.js");
-const DeleteComment = require("../../src/deleteComment.js");
+const PostPage = require("../post/post.js");
+const Comment = require("../comment/comment.js");
+const DeleteComment = require("../deleteComment/deleteComment.js");
 
 describe("Delete a comment in twitter", function (env) {
   this.timeout(60000);
@@ -19,5 +19,6 @@ describe("Delete a comment in twitter", function (env) {
     await postPage.ProcessPost();
     await comment.processComment();
     await deleteComment.DeleteProcess();
+    await deleteComment.validation();
   });
 });
