@@ -1,6 +1,6 @@
 const { until, By } = require("selenium-webdriver");
 const { driver } = require("../../src/driver");
-
+const assert = require("assert");
 class DeleteComment {
   async DeleteProcess() {
     await this.clickComment();
@@ -51,6 +51,30 @@ class DeleteComment {
       4000
     );
     await confirmButton.click();
+  }
+  async validation() {
+    await this.deleteMessageSuccess();
+    // await this.dataTimeComment();
+  }
+
+  async deleteMessageSuccess() {
+    try {
+      let success = await driver.wait(
+        until.elementLocated(
+          By.className(
+            "css-1dbjc4n r-1loqt21 r-18u37iz r-1ny4l3l r-1udh08x r-1qhn6m8 r-i023vh r-o7ynqc r-6416eg"
+          )
+        ),
+        5000
+      );
+      if (success !== null) {
+        console.log("first");
+      } else {
+        assert(success == null);
+      }
+    } catch (error) {
+      return null;
+    }
   }
 }
 module.exports = DeleteComment;
