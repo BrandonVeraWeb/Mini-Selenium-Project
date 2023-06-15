@@ -2,19 +2,18 @@ const { By, until, Key } = require("selenium-webdriver");
 const { driver } = require("../src/driver");
 
 class LoginPage {
-  constructor() {
-    this.page = driver.get("https://twitter.com");
-    this.log = driver.findElement(By.linkText("Log in"));
-  }
-
   async LoginProcess() {
-    await this.log.click();
+    await this.clickLog();
     await this.loginEmail("@Manueltest48284");
     await this.passwordInput("carroSeguro23");
   }
 
+  async clickLog() {
+    const logIn = driver.wait(until.elementLocated(By.css('a[href="/login"]')));
+    await logIn.click();
+  }
   async OpenTwitter() {
-    await this.page;
+    this.page = driver.get("https://twitter.com");
     await driver.manage().window().maximize();
   }
 
