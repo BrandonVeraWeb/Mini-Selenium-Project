@@ -13,6 +13,6 @@ describe("Make a post in twitter", function (env) {
 
   it("Make a post", async function () {
     await postPage.ProcessPost();
+    await postPage.validation();
   });
 });
-
