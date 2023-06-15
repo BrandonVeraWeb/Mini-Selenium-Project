@@ -21,18 +21,24 @@ class DownloadImg {
   }
 
   async downloadPicture() {
-    let pictureProfile = await driver.wait(
-      until.elementLocated(By.className("css-9pa8cd")),
-      12000
-    );
-    const imageUrl = await pictureProfile.getAttribute("src");
-    const imageBuffer = await driver.executeScript(async function (url) {
-      const response = await window.fetch(url);
-      const buffer = await response.arrayBuffer();
-      return Array.from(new Uint8Array(buffer));
-    }, imageUrl);
+    try {
+      let pictureProfile = await driver.wait(
+        until.elementLocated(By.css('img[alt="Image"]')),
+        15000
+      );
+      if (pictureProfile) {
+        const imageUrl = await pictureProfile.getAttribute("src");
+        const imageBuffer = await driver.executeScript(async function (url) {
+          const response = await window.fetch(url);
+          const buffer = await response.arrayBuffer();
+          return Array.from(new Uint8Array(buffer));
+        }, imageUrl);
 
-    fs.writeFileSync("imagen.jpg", Buffer.from(imageBuffer));
+        fs.writeFileSync("img.jpg", Buffer.from(imageBuffer));
+      }
+    } catch (error) {
+      throw new Error("Failed test");
+    }
   }
 }
 

@@ -13,5 +13,6 @@ describe("Make a logout in twitter", function (env) {
 
   it("Logout test", async function () {
     await logout.LogoutProcess();
+    await logout.validation();
   });
 });

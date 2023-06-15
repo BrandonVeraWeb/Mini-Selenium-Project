@@ -1,5 +1,6 @@
 const { By, until, Key } = require("selenium-webdriver");
 const { driver } = require("../src/driver");
+const assert = require("assert");
 
 class Logout {
   async LogoutProcess() {
@@ -37,6 +38,26 @@ class Logout {
       9000
     );
     await confirm.click();
+  }
+
+  async validation() {
+    await this.modalTwitter();
+    await this.messageLogin();
+  }
+
+  async modalTwitter() {
+    let loginTwitter = await driver.wait(
+      until.elementLocated(By.css('section[aria-label="Sign up"]')),
+      10000
+    );
+    assert(loginTwitter !== null);
+  }
+  async messageLogin() {
+    let message = await driver.wait(
+      until.elementLocated(By.css('a[data-testid="login"]')),
+      10000
+    );
+    assert(message !== null);
   }
 }
 module.exports = Logout;
