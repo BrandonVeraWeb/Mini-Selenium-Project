@@ -12,5 +12,6 @@ describe("Search celebrities", function (env) {
 
   it("Logout test", async function () {
     await search.SearchProcess();
+    await search.validation();
   });
 });
