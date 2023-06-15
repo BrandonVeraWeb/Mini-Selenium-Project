@@ -3,9 +3,13 @@ const { driver } = require("../../src/driver");
 
 class Trends {
   async TrendsProcess() {
-    await this.clickTrends();
-    await this.clickLatest();
-    await this.clickProfile();
+    try {
+      await this.clickTrends();
+      await this.clickLatest();
+      await this.clickProfile();
+    } catch (error) {
+      throw new Error(error);
+    }
   }
 
   async clickTrends() {
