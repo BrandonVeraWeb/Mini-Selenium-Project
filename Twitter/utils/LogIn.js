@@ -5,7 +5,8 @@ class Login {
   async Success() {
     await this.loginEmail("@Manueltest48284");
     await this.passwordInput("carroSeguro23");
-    // await this.assert("https://twitter.com/home");
+    await driver.wait(1000);
+    await this.assert("https://twitter.com/home");
   }
   async Error() {
     await this.loginEmail("@Manueltest48284");
