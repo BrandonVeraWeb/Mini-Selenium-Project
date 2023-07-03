@@ -5,17 +5,16 @@ class Login {
   async Success() {
     await this.loginEmail("@Manueltest48284");
     await this.passwordInput("carroSeguro23");
-    // await this.assert("https://twitter.com/home");
+    await this.assert("https://twitter.com/home");
   }
   async Error() {
     await this.loginEmail("@Manueltest48284");
     await this.passwordInput("passwordIncorrect");
-    await this.assert("https://twitter.com/i/flow/login");
+    await this.assert(
+      "https://twitter.com/i/flow/login?redirect_after_login=%2F"
+    );
   }
-  async assert(pageUrl) {
-    let url = await driver.getCurrentUrl();
-    assert.equal(url, pageUrl);
-  }
+
   async Logout() {
     await this.Success();
     let buttonProfile = await driver.wait(
@@ -46,13 +45,15 @@ class Login {
     assert.equal(url, "https://twitter.com/logout");
   }
   async OpenTwitter() {
-    this.page = driver.get("https://twitter.com");
+    this.page = driver.get(
+      "https://twitter.com/i/flow/login?redirect_after_login=%2F"
+    );
     await driver.manage().window().maximize();
   }
 
   async loginEmail(email) {
-    const logIn = driver.wait(until.elementLocated(By.css('a[href="/login"]')));
-    await logIn.click();
+    // const logIn = driver.wait(until.elementLocated(By.css('a[href="/login"]')));
+    // await logIn.click();
     let emailField = await driver.wait(
       until.elementLocated(By.css("*[name='text']")),
       10000
@@ -69,8 +70,15 @@ class Login {
     await passwordField.sendKeys(password);
     await passwordField.sendKeys(Key.ENTER);
   }
+
+  async assert(pageUrl) {
+    await driver.sleep(3000);
+    let url = await driver.getCurrentUrl();
+    assert.equal(url, pageUrl);
+  }
+
   async close() {
-    await driver.quit();
+    await driver.close();
   }
 }
 
