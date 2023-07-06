@@ -2,7 +2,8 @@ const { until, By } = require("selenium-webdriver");
 const { driver } = require("../../src/driver");
 const assert = require("assert");
 class DeleteComment {
-  async DeleteProcess() {
+  async deleteProcess() {
+    await driver.sleep(3000);
     await this.clickComment();
     await this.optionComment();
     await this.selectOption();
