@@ -82,7 +82,7 @@ class Login {
   }
 
   async close() {
-    await driver.close();
+    await driver.quit();
   }
 }
 
