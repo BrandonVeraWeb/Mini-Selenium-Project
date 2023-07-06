@@ -16,38 +16,33 @@ class Login {
   }
 
   async Logout() {
-    try {
-      await this.Success();
-      let buttonProfile = await driver.wait(
-        until.elementLocated(
-          By.className(
-            "r-1nao33i r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-bnwqim r-1plcrui r-lrvibr"
-          )
-        ),
-        10000
-      );
-      await buttonProfile.click();
-      let selectLogout = await driver.wait(
-        until.elementLocated(
-          By.css('a[data-testid*="AccountSwitcher_Logout_Button"]')
-        ),
-        12000
-      );
-      await selectLogout.click();
+    await this.Success();
+    let buttonProfile = await driver.wait(
+      until.elementLocated(
+        By.className(
+          "r-1nao33i r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-bnwqim r-1plcrui r-lrvibr"
+        )
+      ),
+      10000
+    );
+    await buttonProfile.click();
+    let selectLogout = await driver.wait(
+      until.elementLocated(
+        By.css('a[data-testid*="AccountSwitcher_Logout_Button"]')
+      ),
+      12000
+    );
+    await selectLogout.click();
 
-      let confirm = await driver.wait(
-        until.elementLocated(
-          By.css('div[data-testid*="confirmationSheetConfirm"]')
-        ),
-        15000
-      );
-      await confirm.click();
-      let url = await driver.getCurrentUrl();
-      assert.equal(url, "https://twitter.com/logout");
-    } finally {
-      await driver.sleep(3000);
-      await driver.close();
-    }
+    let confirm = await driver.wait(
+      until.elementLocated(
+        By.css('div[data-testid*="confirmationSheetConfirm"]')
+      ),
+      15000
+    );
+    await confirm.click();
+    let url = await driver.getCurrentUrl();
+    assert.equal(url, "https://twitter.com/logout");
   }
   async OpenTwitter() {
     await driver.manage().deleteAllCookies();
