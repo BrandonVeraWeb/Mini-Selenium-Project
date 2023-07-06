@@ -1,5 +1,4 @@
 const Login = require("../utils/LogIn");
-const { driver } = require("../src/driver");
 
 describe("Login", function (env) {
   this.timeout(60000);
@@ -18,6 +17,6 @@ describe("Login", function (env) {
     await login.Logout();
   });
   after(async () => {
-    await driver.quit();
+    await login.close();
   });
 });
