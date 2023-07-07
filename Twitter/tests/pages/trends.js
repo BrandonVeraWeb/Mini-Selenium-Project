@@ -2,17 +2,7 @@ const { By, until } = require("selenium-webdriver");
 const { driver } = require("../../src/driver");
 
 class Trends {
-  async TrendsProcess() {
-    try {
-      await this.clickTrends();
-      await this.clickLatest();
-      await this.clickProfile();
-    } catch (error) {
-      throw new Error(error);
-    }
-  }
-
-  async clickTrends() {
+  async Success() {
     let divTrends = await driver.wait(
       until.elementLocated(
         By.className(
@@ -22,15 +12,12 @@ class Trends {
       9000
     );
     await divTrends.click();
-  }
-  async clickLatest() {
     let divLatest = await driver.wait(
       until.elementLocated(By.linkText("View all")),
       10000
     );
     await divLatest.click();
-  }
-  async clickProfile() {
+
     let profileClick = await driver.wait(
       until.elementLocated(
         By.className(
@@ -41,5 +28,6 @@ class Trends {
     );
     await profileClick.click();
   }
+
 }
 module.exports = Trends;

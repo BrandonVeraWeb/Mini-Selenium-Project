@@ -1,7 +1,7 @@
 const Login = require("../utils/LogIn.js");
-const PostPage = require("./page/post.js");
-const Comment = require("./page/comment.js");
-const DeleteComment = require("./page/deleteComment.js");
+const PostPage = require("./pages/post.js");
+const Comment = require("./pages/comment.js");
+const DeleteComment = require("./pages/deleteComment.js");
 
 describe("Post on twitter", function (env) {
   this.timeout(60000);
