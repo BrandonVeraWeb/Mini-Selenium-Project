@@ -9,22 +9,19 @@ describe("Login", function (env) {
     login.OpenTwitter();
   });
   it("Login Success", async function () {
-    await login.Success();
-    let url = await driver.getCurrentUrl();
-    assert.equal(url, "https://twitter.com/home", "Login Success is failed");
+    let url = await login.Success();
+    assert.equal(url, "https://twitter.com/home", "Login success is failed");
   });
   it("Login Error", async function () {
-    await login.Error();
-    let url = await driver.getCurrentUrl();
+    let url = await login.Error();
     assert.equal(
       url,
       "https://twitter.com/i/flow/login?redirect_after_login=%2F",
       "Login Error is failed"
     );
   });
-  it.only("Logout", async function () {
-    await login.Logout();
-    let url = await driver.getCurrentUrl();
+  it("Logout", async function () {
+    let url = await login.Logout();
     assert.equal(url, "https://twitter.com/logout", "Logout is failed");
   });
 });
