@@ -28,7 +28,7 @@ Follow these steps to install the "twitter-test" project on your local machine:
 3. Install the project dependencies using npm (Node Package Manager). Run the following command in your terminal:
 
    ```
-   npm install
+   npm install --save-dev mocha-webdriver
    ```
 
    This will install all the necessary dependencies specified in the `package.json` file, including `chance`, `selenium-webdriver`, and `mocha`.
@@ -42,7 +42,7 @@ Follow these steps to install the "twitter-test" project on your local machine:
 5. Once all the dependencies have been successfully installed, you can run the project's test scripts. Use the following command to run the tests with Mocha:
 
    ```
-   mocha test
+   mocha tests
    ```
 
    This will execute the automated tests using Mocha and display the results in your terminal.
