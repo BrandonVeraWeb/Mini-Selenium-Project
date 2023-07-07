@@ -1,6 +1,6 @@
 const { By, until } = require("selenium-webdriver");
 const { driver } = require("../../src/driver");
-const { sentence } = require("../../utils/Chance.js");
+const { fullsentences } = require("../../utils/Chance.js");
 const assert = require("assert");
 class PostPage {
   async proccessPost() {
@@ -12,7 +12,7 @@ class PostPage {
       8000
     );
     await inputPost.click();
-    await inputPost.sendKeys(sentence);
+    await inputPost.sendKeys(fullsentences);
     let buttonTweet = await driver.wait(
       until.elementLocated(By.css("div[data-testid*='tweetButtonInline']")),
       6000
