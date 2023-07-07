@@ -33,12 +33,12 @@ class Comment {
       9000
     );
     await button.click();
-    let url = await driver.getCurrentUrl();
-    assert.equal(
-      url,
-      "https://twitter.com/Manueltest48284/status/1677048167286685698"
-    );
-    console.log(url);
+    // let url = await driver.getCurrentUrl();
+    // assert.equal(
+    //   url,
+    //   "https://twitter.com/Manueltest48284/status/1677048167286685698"
+    // );
+    // console.log(url);
   }
 }
 

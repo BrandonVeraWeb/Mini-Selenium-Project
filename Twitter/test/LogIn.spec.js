@@ -16,7 +16,7 @@ describe("Login", function (env) {
   it("Logout", async function () {
     await login.Logout();
   });
-  after(async () => {
-    await login.close();
-  });
+  // after(async () => {
+  //   await login.close();
+  // });
 });

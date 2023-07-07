@@ -18,7 +18,7 @@ describe("Post on twitter", function (env) {
   it("Make a post", async function () {
     await post.proccessPost();
   });
-  it.only("Make a comment in a post", async function () {
+  it("Make a comment in a post", async function () {
     await post.proccessPost();
     await comment.processComment();
   });
