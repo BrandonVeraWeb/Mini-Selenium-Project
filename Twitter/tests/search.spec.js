@@ -8,7 +8,7 @@ describe("Search", function (env) {
   const search = new Search(env);
   const trends = new Trends(env);
   const downloadImg = new DownloadImg(env);
-  
+
   beforeEach(function () {
     login.OpenTwitter();
     login.Success();
@@ -25,5 +25,5 @@ describe("Search", function (env) {
     await search.SearchSuccess();
     await downloadImg.Success();
   });
-  // after(async () => await login.close());
+  after(async () => await login.close());
 });

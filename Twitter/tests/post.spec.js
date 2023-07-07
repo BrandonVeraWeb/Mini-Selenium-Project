@@ -27,6 +27,4 @@ describe("Post on twitter", function (env) {
     await comment.processComment();
     await deleteComment.deleteProcess();
   });
-
-  // after(async () => await login.close());
 });
