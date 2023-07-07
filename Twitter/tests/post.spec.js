@@ -9,22 +9,25 @@ describe("Post on twitter", function (env) {
   const post = new PostPage(env);
   const comment = new Comment(env);
   const deleteComment = new DeleteComment(env);
-
+  const assert = require("assert");
   beforeEach(function () {
     login.OpenTwitter();
     login.Success();
   });
 
   it("Make a post", async function () {
-    await post.proccessPost();
+    let url = await post.Success();
+    assert.equal(url, "https://twitter.com/home", "Post failed");
   });
   it("Make a comment in a post", async function () {
-    await post.proccessPost();
-    await comment.processComment();
+    await post.Success();
+    let url = await comment.processComment();
+    assert.notEqual(url, "https://twitter.com/home", "Comment failed");
   });
   it("delete a comment", async function () {
-    await post.proccessPost();
+    await post.Success();
     await comment.processComment();
-    await deleteComment.deleteProcess();
+    let url = await deleteComment.deleteProcess();
+    assert.notEqual(url, "https://twitter/home", "Delete a comment failed");
   });
 });

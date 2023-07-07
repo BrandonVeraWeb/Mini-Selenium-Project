@@ -1,7 +1,6 @@
 const { until, By, Key } = require("selenium-webdriver");
 const { driver } = require("../../src/driver");
 const { animal } = require("../../utils/Chance.js");
-const assert = require("assert");
 class Comment {
   async processComment() {
     await driver.sleep(3000);
@@ -33,12 +32,8 @@ class Comment {
       9000
     );
     await button.click();
-    // let url = await driver.getCurrentUrl();
-    // assert.equal(
-    //   url,
-    //   "https://twitter.com/Manueltest48284/status/1677048167286685698"
-    // );
-    // console.log(url);
+    let url = await driver.getCurrentUrl();
+    return url;
   }
 }
 

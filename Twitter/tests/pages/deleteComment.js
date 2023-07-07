@@ -39,6 +39,8 @@ class DeleteComment {
       4000
     );
     await confirmButton.click();
+    let url = await driver.getCurrentUrl();
+    return url;
   }
 }
 module.exports = DeleteComment;

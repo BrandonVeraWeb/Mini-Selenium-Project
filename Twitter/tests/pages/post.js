@@ -1,9 +1,8 @@
 const { By, until } = require("selenium-webdriver");
 const { driver } = require("../../src/driver");
 const { fullsentences } = require("../../utils/Chance.js");
-const assert = require("assert");
 class PostPage {
-  async proccessPost() {
+  async Success() {
     await driver.sleep(3000);
     let inputPost = await driver.wait(
       until.elementLocated(
@@ -20,7 +19,7 @@ class PostPage {
     await buttonTweet.click();
     await driver.sleep(2000);
     let url = await driver.getCurrentUrl();
-    assert.equal(url, "https://twitter.com/home");
+    return url;
   }
 }
 

@@ -1,18 +1,18 @@
 const { By, until, Key } = require("selenium-webdriver");
 const { driver } = require("../src/driver");
-const assert = require("assert");
 class Login {
   async Success() {
     await this.loginEmail("@Manueltest48284");
     await this.passwordInput("carroSeguro23");
-    await this.assert("https://twitter.com/home");
+    await driver.sleep(1000);
+    let url = await driver.getCurrentUrl();
+    return url;
   }
   async Error() {
     await this.loginEmail("@Manueltest48284");
     await this.passwordInput("passwordIncorrect");
-    await this.assert(
-      "https://twitter.com/i/flow/login?redirect_after_login=%2F"
-    );
+    let url = await driver.getCurrentUrl();
+    return url;
   }
 
   async Logout() {
@@ -42,7 +42,7 @@ class Login {
     );
     await confirm.click();
     let url = await driver.getCurrentUrl();
-    assert.equal(url, "https://twitter.com/logout");
+    return url;
   }
   async OpenTwitter() {
     await driver.manage().deleteAllCookies();
@@ -68,12 +68,6 @@ class Login {
     );
     await passwordField.sendKeys(password);
     await passwordField.sendKeys(Key.ENTER);
-  }
-
-  async assert(pageUrl) {
-    await driver.sleep(3000);
-    let url = await driver.getCurrentUrl();
-    assert.equal(url, pageUrl);
   }
 
   async close() {
