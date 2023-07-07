@@ -3,12 +3,7 @@ const { driver } = require("../../src/driver");
 const fs = require("fs");
 
 class DownloadImg {
-  async DownloadProcess() {
-    await this.clickPicture();
-    await this.downloadPicture();
-  }
-
-  async clickPicture() {
+  async Success() {
     let picture = await driver.wait(
       until.elementLocated(
         By.className(
@@ -18,9 +13,6 @@ class DownloadImg {
       8000
     );
     await picture.click();
-  }
-
-  async downloadPicture() {
     try {
       let pictureProfile = await driver.wait(
         until.elementLocated(By.css('img[alt="Image"]')),
